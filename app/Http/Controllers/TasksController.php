@@ -41,6 +41,14 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         //
+        //dd($request->all());
+        \App\Task::create([
+            'name' => $request->name,
+            'pic' => $request->pic,
+            'email' => $request->email,
+            'phone_no' => $request->phone_no,
+        ]);
+        return redirect('tasks');
     }
 
     /**

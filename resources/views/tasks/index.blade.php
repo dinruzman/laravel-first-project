@@ -7,16 +7,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
 
-<style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 2px;
-        text-align: left;
-    }
-</style>
 
 </head>
 <body>
