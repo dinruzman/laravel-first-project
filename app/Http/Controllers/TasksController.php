@@ -48,7 +48,7 @@ class TasksController extends Controller
             'email' => $request->email,
             'phone_no' => $request->phone_no,
         ]);
-        return redirect('tasks');
+        return redirect('home');
     }
 
     /**
@@ -94,5 +94,9 @@ class TasksController extends Controller
     public function destroy($id)
     {
         //
+        $tasks = \App\Task::find($id);
+        $tasks->delete();
+
+        return redirect('home');
     }
 }

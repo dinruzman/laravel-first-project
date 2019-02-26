@@ -22,13 +22,21 @@
                         <th>pic</th>
                         <th>Email</th>
                         <th>Phone No</th>
+                        <th></th>
                     </tr>
                     @foreach ($tasks as $task)
                     <tr>
-                        <td>{{$task -> name}}</td>
+                        <td>{{$task -> name}}
                         <td>{{$task -> pic}}</td>
                         <td>{{$task -> email}}</td>
                         <td>{{$task -> phone_no}}</td>
+                        <td>
+                        <form action="{{action('TasksController@destroy',$task['id'])}}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger float-right" >Delete</button>
+                        </form>
+                        </td>
                     </tr>
                     @endforeach
                     </table>
