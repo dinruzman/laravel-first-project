@@ -29,7 +29,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        return view('tasks.create', compact('tasks'));
+        return view('tasks.create');
     }
 
     /**
@@ -70,7 +70,9 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tasks = \App\Task::find($id);
+
+        return view('tasks.edit',compact('tasks'));
     }
 
     /**
@@ -82,7 +84,18 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($id,$request->all());
+        $tasks = \App\Task::find($id);
+        $tasks->update([  
+            'name' => $request->name,
+            'pic' => $request->pic,
+            'email' => $request->email,
+            'phone_no' => $request->phone_no,
+        ]);
+
+        return redirect('tasks');
+        //$tasks = \App\Task::all();
+        //return view('home',compact('tasks'));
     }
 
     /**
@@ -97,6 +110,6 @@ class TasksController extends Controller
         $tasks = \App\Task::find($id);
         $tasks->delete();
 
-        return redirect('home');
+        return redirect('tasks');
     }
 }

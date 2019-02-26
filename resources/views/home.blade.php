@@ -18,26 +18,32 @@
 
                     <table class="table table-striped">
                     <tr>
+                        <th>ID</th>
                         <th>Tasks</th>
                         <th>pic</th>
                         <th>Email</th>
                         <th>Phone No</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     @foreach ($tasks as $task)
                     <tr>
-                        <td>{{$task -> name}}
-                        <td>{{$task -> pic}}</td>
-                        <td>{{$task -> email}}</td>
-                        <td>{{$task -> phone_no}}</td>
+                        <td>{{$task->id}}</td>
+                        <td>{{$task->name}}</td>
+                        <td>{{$task->pic}}</td>
+                        <td>{{$task->email}}</td>
+                        <td>{{$task->phone_no}}</td>
                         <td>
-                        <form action="{{action('TasksController@destroy',$task['id'])}}" method="POST">
+                        <form action="{{url('tasks/'.$task->id)}}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-danger float-right" >Delete</button>
                         </form>
                         </td>
-                    </tr>
+                        <td>
+                            <a href="{{url('tasks/'.$task->id.'/edit')}}" class="btn btn-warning float-right">Edit</a>
+                        </td>
+                        </tr>
                     @endforeach
                     </table>
                 </div>
